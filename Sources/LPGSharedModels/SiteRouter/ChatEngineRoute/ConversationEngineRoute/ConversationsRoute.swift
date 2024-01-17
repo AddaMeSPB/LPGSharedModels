@@ -4,7 +4,7 @@ import URLRouting
 import BSON
 
 public enum ConversationsRoute: Equatable {
-    case create(input: ConversationModel)
+    case create(input: ConversationCreate)
     case list(query: QueryItem)
     case update(input: ConversationModel)
     case delete(id: ObjectId)
@@ -19,7 +19,7 @@ public struct ConversationsRouter: ParserPrinter {
         OneOf {
             Route(.case(ConversationsRoute.create)) {
                 Method.post
-                Body(.json(ConversationModel.self))
+                Body(.json(ConversationCreate.self))
             }
             
             Route(.case(ConversationsRoute.list)) {

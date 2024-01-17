@@ -1,10 +1,10 @@
 import Foundation
 import BSON
 
-extension DeviceOutPut {
-    static public let empty: DeviceOutPut = .init(id: .init(), name: "", pushToken: "", voipToken: "")
-    
-    static public let draff: DeviceOutPut = .init(
+extension DeviceInOutPut {
+    static public let empty: DeviceInOutPut = .init(id: .init(), name: "", pushToken: "", voipToken: "")
+
+    static public let draff: DeviceInOutPut = .init(
         id: ObjectId("5fc4e85f7557200b8c8f0dfb")!,
         ownerId: ObjectId("5fabb1ebaa5f5774ccfe48c3"),
         name: "iPhone",

@@ -1,4 +1,4 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -16,7 +16,8 @@ let package = Package(
             targets: ["LPGSharedModels"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/pointfreeco/swift-url-routing.git", from: "0.5.0"),
+        .package(url: "https://github.com/pointfreeco/swift-url-routing.git", from: "0.6.0"),
+//        .package(path: "/Users/alif/Developer/Swift/MySideProjects/LearnPlayGrow/swift-url-routing"),
         .package(url: "https://github.com/orlandos-nl/BSON.git", from: "8.0.9")
     ],
     targets: [

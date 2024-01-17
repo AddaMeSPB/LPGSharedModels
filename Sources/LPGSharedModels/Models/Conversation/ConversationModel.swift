@@ -43,6 +43,4 @@ public struct ConversationModel: Codable {
     }
 }
 
-extension ConversationModel: Equatable {
-    
-}
+extension ConversationModel: Equatable {}

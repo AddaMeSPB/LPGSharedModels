@@ -54,8 +54,9 @@ extension DeviceModel: Equatable {
         && lhs.updatedAt == rhs.updatedAt
     }
 }
+
 extension DeviceModel {
-    public func mapGet() -> DeviceOutPut {
+    public func mapGet() -> DeviceInOutPut {
         return .init(
             id: self._id,
             ownerId: self.ownerId,
@@ -72,8 +73,8 @@ extension DeviceModel {
 }
 
 
-public struct DeviceOutPut: Codable, Equatable, Hashable, Identifiable {
-    public var id: ObjectId
+public struct DeviceInOutPut: Codable, Equatable, Hashable, Identifiable {
+    public var id: ObjectId?
     public var ownerId: ObjectId?
     public var identifierForVendor: String?
     public var name: String
@@ -84,7 +85,7 @@ public struct DeviceOutPut: Codable, Equatable, Hashable, Identifiable {
     public var createdAt, updatedAt: Date?
     
     public init(
-        id: ObjectId,
+        id: ObjectId? = nil,
         ownerId: ObjectId? = nil,
         identifierForVendor: String? = nil,
         name: String,

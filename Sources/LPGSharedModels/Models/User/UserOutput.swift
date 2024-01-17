@@ -17,7 +17,7 @@ public struct UserOutput: Codable, Identifiable {
     public var language: UserLanguage
 
     // User Device lists
-    public var devices: [DeviceOutPut]?
+    public var devices: [DeviceInOutPut]?
 
     // User Swap events
     public var swaps: [SwapOutput]?
@@ -38,7 +38,7 @@ public struct UserOutput: Codable, Identifiable {
 
     /// Init
     /// - Parameters:
-    ///   - id: ObjectId(mongodb ID)  are similar to a GUID or a UUID, and can be used to uniquely identify objects without a centralized
+    ///   - id: An ObjectId is a 12-byte unique identifier used in MongoDB to uniquely identify a document within a collection. It consists of a timestamp, a machine identifier, a process id, and a counter.
     ///   - fullName: String combine Firstname + Lastname
     ///   - email: Email
     ///   - phoneNumber: phoneNumber
@@ -56,7 +56,7 @@ public struct UserOutput: Codable, Identifiable {
         phoneNumber: String? = nil,
         role: UserRole,
         language: UserLanguage,
-        devices: [DeviceOutPut]? = nil,
+        devices: [DeviceInOutPut]? = nil,
         swaps: [SwapOutput]? = nil,
         attachments: [AttachmentInOutPut]? = nil,
         adminsConversations: [ConversationOutPut]? = nil,
@@ -109,19 +109,16 @@ extension UserOutput: Equatable, Hashable {
 }
 
 extension UserOutput {
-  public var lastAvatarURLString: String? {
-    guard let atchmts = attachments else {
-      return nil
-    }
-    print(#line, atchmts)
-    return atchmts.filter { $0.type == .image }.last?.imageUrlString
-  }
+    public var lastAvatarURLString: String {
+        if !(attachments?.isEmpty ?? false) {
+            return attachments!.filter { $0.type == .image }.last!.imageUrlString ?? "https://empty.com"
+        }
 
-  public var imageURL: URL? {
-    guard let lastAvatarURLS = lastAvatarURLString else {
-      return nil
+        print(#line, #file, "empty string")
+        return "https://empty.com"
     }
 
-    return URL(string: lastAvatarURLS)!
-  }
+    public var imageURL: URL {
+        return URL(string: lastAvatarURLString)!
+    }
 }
