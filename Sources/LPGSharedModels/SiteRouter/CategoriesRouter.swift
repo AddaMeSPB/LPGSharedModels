@@ -20,7 +20,7 @@ public struct CategoryRouter: ParserPrinter {
 }
 
 public enum CategoriesRoute: Equatable {
-    case create(inupt: CategoryModel)
+    case create(inupt: CategoryInput)
     case list
     case update(inupt: CategoryModel)
     case category(id: ObjectId, CategoryRoute = .find)
@@ -36,7 +36,7 @@ public struct CategoriesRouter: ParserPrinter {
         OneOf {
             Route(.case(CategoriesRoute.create)) {
                 Method.post
-                Body(.json(CategoryModel.self))
+                Body(.json(CategoryInput.self))
             }
 
             Route(.case(CategoriesRoute.category)) {

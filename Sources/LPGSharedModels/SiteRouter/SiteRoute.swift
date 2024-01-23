@@ -28,6 +28,13 @@ public struct SiteRouter: ParserPrinter {
 
     public var body: some Router<SiteRoute> {
         OneOf {
+
+            Route(.case(SiteRoute.category)) {
+                Path { "v1" }
+                Path { "category" }
+                CategoriesRouter()
+            }
+
             Route(.case(SiteRoute.swaps)) {
                 Path { "v1" }
                 Path { "swaps" }
@@ -44,11 +51,6 @@ public struct SiteRouter: ParserPrinter {
                 AuthEngineRouter()
             }
 
-            Route(.case(SiteRoute.category)) {
-                Path { "v1" }
-                Path { "category" }
-                CategoriesRouter()
-            }
 
             Route(.case(SiteRoute.terms)) {
                 Path { "terms" }

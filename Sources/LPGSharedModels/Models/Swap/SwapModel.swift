@@ -16,7 +16,7 @@ public struct SwapModel: Codable {
         overlay: Bool? = false,
         ownerId: ObjectId,
         conversationsId: ObjectId,
-        categoriesId: ObjectId,
+        categoryId: ObjectId,
         urlString: String,
         createdAt: Date? = nil,
         updatedAt: Date? = nil
@@ -34,7 +34,7 @@ public struct SwapModel: Codable {
 
         self.ownerId = ownerId
         self.conversationId = conversationsId
-        self.categoryId = categoriesId
+        self.categoryId = categoryId
         self.urlString = urlString
 
         self.createdAt = createdAt
@@ -63,7 +63,10 @@ public struct SwapModel: Codable {
 }
 
 extension SwapModel {
-    public func mapGet(attachments: [AttachmentInOutPut], userOutput: UserOutput) -> SwapOutput {
+    public func mapGet(
+        attachments: [AttachmentInOutPut],
+        userOutput: UserOutput
+    ) -> SwapOutput {
         return .init(id: self._id, title: self.title, details: self.details, distance: self.distance ?? 0.0, addressName: self.addressName, geometry: self.geometry, sponsored: self.sponsored, overlay: self.overlay, owner: userOutput, conversationId: self.conversationId, categoryId: self.categoryId, attachments: attachments, urlString: self.urlString, createdAt: self.createdAt!, updatedAt: self.updatedAt!)
     }
 }

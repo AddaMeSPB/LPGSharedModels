@@ -1,6 +1,16 @@
 import Foundation
 import BSON
 
+public struct CategoryInput: Codable {
+    public let name: String
+}
+
+extension CategoryInput: Equatable {
+    public static func == (lhs: CategoryInput, rhs: CategoryInput) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
+
 public struct CategoryModel: Codable {
 
     public static var collectionName = "categories"

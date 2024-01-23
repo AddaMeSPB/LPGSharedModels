@@ -10,9 +10,25 @@ public struct Geometry: Codable, Equatable {
         self.coordinates = coordinates
     }
 
-    public var type: GeoType
+    public var type: GeoType = .Point
     public var coordinates: [Double]
 }
+
+/*
+
+ "geometry": { Point way
+   "coordinates": [45.760044, 21.238451],
+   "type": "Point"
+ }
+
+ "geometry": { Polygon way
+   "type": "Polygon",
+   "coordinates": [
+     [ [45.760044, 21.238451], [45.761000, 21.239000], [45.762000, 21.240000], [45.760044, 21.238451] ]
+   ]
+ }
+
+ */
 
 // Timisoara
 extension Geometry {
@@ -96,7 +112,6 @@ extension Geometry {
     ]
 
 }
-
 
 // BucharestCentre
 extension Geometry {

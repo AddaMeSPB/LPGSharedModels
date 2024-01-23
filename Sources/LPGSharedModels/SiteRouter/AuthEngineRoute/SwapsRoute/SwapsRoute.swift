@@ -2,7 +2,7 @@ import URLRouting
 import BSON
 
 public enum SwapsRoute: Equatable {
-    case create(input: SwapModel)
+    case create(input: SwapInput)
     case list(SwapPageRequest)
 
     // have convert Object id not string
@@ -16,7 +16,7 @@ public struct SwapsRouter: ParserPrinter {
         OneOf {
             Route(.case(SwapsRoute.create)) {
                 Method.post
-                Body(.json(SwapModel.self))
+                Body(.json(SwapInput.self))
             }
 
             Route(.case(SwapsRoute.read)) {
