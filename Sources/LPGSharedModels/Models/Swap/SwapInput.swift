@@ -7,7 +7,6 @@ public struct SwapInput {
     public var name: String
     public var details: String?
     public var images: [AttachmentInOutPut] = []
-    public var duration: Int
     public var isActive: Bool
     public var ownerId: ObjectId?
     public var conversationId: ObjectId?
@@ -23,7 +22,6 @@ public struct SwapInput {
         name: String,
         details: String? = nil,
         images: [AttachmentInOutPut] = [],
-        duration: Int,
         isActive: Bool,
         ownerId: ObjectId? = nil,
         conversationId: ObjectId? = nil,
@@ -36,7 +34,6 @@ public struct SwapInput {
         self.name = name
         self.details = details
         self.images = images
-        self.duration = duration
         self.isActive = isActive
         self.ownerId = ownerId
         self.conversationId = conversationId
@@ -50,7 +47,7 @@ public struct SwapInput {
 
 extension SwapInput {
     public static var empty: SwapInput = .init(
-        name: "", duration: 0, isActive: false,
+        name: "", isActive: false,
         ownerId: nil, conversationId: ObjectId(),
         categoryId: ObjectId(), addressName: "",
         geometry: .init(type: .Polygon, coordinates: [0.0, 0.0])
