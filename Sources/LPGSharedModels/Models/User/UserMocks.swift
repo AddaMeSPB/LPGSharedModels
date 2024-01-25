@@ -34,7 +34,7 @@ extension UserOutput {
     
     static public var withAttachments = UserOutput(
         id: ObjectId("5fabb05d2470c17919b3c0e2")!,
-      fullName: "+79210000004",
+      fullName: "Maxim Step Ali",
       role: .basic,
       language: .russian,
       attachments: [

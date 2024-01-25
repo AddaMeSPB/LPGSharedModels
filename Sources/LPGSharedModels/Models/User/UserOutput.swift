@@ -111,11 +111,10 @@ extension UserOutput: Equatable, Hashable {
 extension UserOutput {
     public var lastAvatarURLString: String {
         if !(attachments?.isEmpty ?? false) {
-            return attachments!.filter { $0.type == .image }.last!.imageUrlString ?? "https://empty.com"
+            return attachments!.filter { $0.type == .image }.last!.imageUrlString ?? "https://learnplaygrow.ams3.cdn.digitaloceanspaces.com/uploads/images/avatar_mock/girl_av.png"
         }
 
-        print(#line, #file, "empty string")
-        return "https://empty.com"
+        return "https://learnplaygrow.ams3.cdn.digitaloceanspaces.com/uploads/images/avatar_mock/girl_av.png"
     }
 
     public var imageURL: URL {

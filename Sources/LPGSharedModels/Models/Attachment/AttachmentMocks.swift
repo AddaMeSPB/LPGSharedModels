@@ -20,7 +20,7 @@ extension AttachmentInOutPut {
       type: .image,
       userId: UserOutput.withFirstName.id,
       imageUrlString:
-        "https://adda.nyc3.digitaloceanspaces.com/uploads/images/5fabb1ebaa5f5774ccfe48c3/1605876343603.jpeg",
+        "https://adda.nyc3.digitaloceanspaces.comuploads/images/65b00249138193cf470e489d/1706033741885.heic",
       audioUrlString: nil, videoUrlString: nil, fileUrlString: nil, createdAt: nil, updatedAt: nil)
 
     static public var image3: AttachmentInOutPut = .init(

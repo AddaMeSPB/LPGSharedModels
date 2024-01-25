@@ -60,3 +60,20 @@ extension AttachmentInOutPut: Equatable {
 }
 
 extension AttachmentInOutPut: Hashable {}
+
+
+public struct AttachmentURL: Codable, Equatable {
+    public init(
+        userId: ObjectId? = nil,
+        swapId: ObjectId? = nil,
+        link: String
+    ) {
+        self.userId = userId
+        self.swapId = swapId
+        self.link = link
+    }
+    
+    public let userId: ObjectId?
+    public let swapId: ObjectId?
+    public let link: String
+}
