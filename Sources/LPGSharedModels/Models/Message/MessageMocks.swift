@@ -70,7 +70,7 @@ extension MessageItem {
     )
 
     static public let messageItem6 = MessageItem(
-        id: ObjectId("5f9713d8c4b1856382b7bd86")!,
+        id: ObjectId("5f9713d8c4b1956382b7bd86")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
         messageBody: "Awesome 👏🏻", messageType: .text,
         isRead: true,

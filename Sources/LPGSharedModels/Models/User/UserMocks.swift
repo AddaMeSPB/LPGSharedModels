@@ -13,7 +13,7 @@ extension UserOutput {
     )
     
     static public let withLastName = UserOutput(
-        id: ObjectId("5fabb05d2470c17919b3c0e2")!,
+      id: ObjectId("5fabb05d2470c17919b3c0e2")!,
       fullName: "Masum",
       role: .basic,
       language: .russian,

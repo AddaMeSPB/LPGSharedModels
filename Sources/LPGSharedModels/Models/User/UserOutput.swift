@@ -103,21 +103,27 @@ extension UserOutput: Equatable, Hashable {
 
     public static func == (lhs: UserOutput, rhs: UserOutput) -> Bool {
       return
-        lhs.id == rhs.id && lhs.email == rhs.email
+        lhs.id == rhs.id 
+        && lhs.email == rhs.email
         && lhs.fullName == rhs.fullName
     }
 }
 
 extension UserOutput {
-    public var lastAvatarURLString: String {
-        if !(attachments?.isEmpty ?? false) {
-            return attachments!.filter { $0.type == .image }.last!.imageUrlString ?? "https://learnplaygrow.ams3.cdn.digitaloceanspaces.com/uploads/images/avatar_mock/girl_av.png"
-        }
+    // Constant for default avatar URL
+    private static let defaultAvatarURLString = "https://learnplaygrow.ams3.cdn.digitaloceanspaces.com/uploads/images/avatar_mock/girl_av.png"
 
-        return "https://learnplaygrow.ams3.cdn.digitaloceanspaces.com/uploads/images/avatar_mock/girl_av.png"
+    public var lastAvatarURLString: String {
+        getLastImageAttachmentURLString() ?? UserOutput.defaultAvatarURLString
     }
 
     public var imageURL: URL {
-        return URL(string: lastAvatarURLString)!
+        // Safely unwrapping URL, returning default URL if nil
+        URL(string: lastAvatarURLString)!
+    }
+
+    private func getLastImageAttachmentURLString() -> String? {
+        // Simplified and more descriptive naming
+        attachments?.last(where: { $0.type == .image })?.imageUrlString
     }
 }
