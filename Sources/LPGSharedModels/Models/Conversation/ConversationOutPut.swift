@@ -62,26 +62,17 @@ extension ConversationOutPut: Hashable {
 extension ConversationOutPut: Comparable {}
 
 extension ConversationOutPut {
-    
-    public var ifAttacmentsNotEmpty: Bool {
-        guard
-            let lstMsg = lastMessage,
-            let attacments = lstMsg.sender.attachments
-        else {
-            return false
-        }
 
-        return attacments.last != nil
+    // This computed property is now simplified to directly check for a non-empty attachments array.
+    public var hasAttachments: Bool {
+        return lastMessage?.sender.attachments?.isEmpty == false
     }
 
+    // This computed property is refined for clarity and efficiency.
     public var imageUrlString: String {
         guard
-            ifAttacmentsNotEmpty,
-            let lstMsg = lastMessage,
-            let attacment = lstMsg.sender.attachments,
-            let lastAttacment = attacment.last,
-            let imageUrlString = lastAttacment.imageUrlString
-        else {
+            hasAttachments,
+            let imageUrlString = lastMessage?.sender.attachments?.last?.imageUrlString else {
             return ""
         }
 

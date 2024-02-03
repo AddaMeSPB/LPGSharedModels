@@ -53,7 +53,7 @@ extension ConversationOutPut {
         type: ConversationCreate.walkAroundDraff.type,
         admins: [.withFirstName],
         members: [.withAttachments, .withLastName],
-        lastMessage: nil,
+        lastMessage: .messageItem6,
         createdAt: Date(),
         updatedAt: Date(),
         deletedAt: Date()
@@ -65,7 +65,7 @@ extension ConversationOutPut {
         type: ConversationCreate.runningDraff.type,
         admins: [.withLastName],
         members: [.withAttachments, .withFirstName],
-        lastMessage: nil,
+        lastMessage: .messageItem3,
         createdAt: Date(),
         updatedAt: Date(),
         deletedAt: Date()
@@ -77,7 +77,7 @@ extension ConversationOutPut {
         type: ConversationCreate.exploreAreaDraff.type,
         admins: [.withFirstName],
         members: [.withAttachments, .withLastName],
-        lastMessage: nil,
+        lastMessage: .messageItem2,
         createdAt: Date(),
         updatedAt: Date(),
         deletedAt: Date()
@@ -89,7 +89,7 @@ extension ConversationOutPut {
         type: ConversationCreate.lookingForAcompanyDraff.type,
         admins: [.withLastName],
         members: [.withAttachments, .withFirstName],
-        lastMessage: nil,
+        lastMessage: .messageItem1,
         createdAt: Date(),
         updatedAt: Date(),
         deletedAt: Date()

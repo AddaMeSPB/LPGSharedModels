@@ -8,11 +8,18 @@
 import Foundation
 import BSON
 
+func randomRecentDate() -> Date {
+    let now = Date()
+    let secondsInAYear: TimeInterval = 365 * 24 * 60 * 60
+    let randomTimeInterval = TimeInterval.random(in: -secondsInAYear...0)
+    return now.addingTimeInterval(randomTimeInterval)
+}
+
 extension MessageItem {
     static public let messageItem1 = MessageItem(
         id: ObjectId("5f96c378d6b5590459f0cd68")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", 
+        messageBody: "Hey, how's it going?",
         messageType: .text,
         isRead: true,
         isDelivered: true,
@@ -25,66 +32,66 @@ extension MessageItem {
     static public let messageItem2 = MessageItem(
         id: ObjectId("5f96c381396c401b86d6db68")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", 
+        messageBody: "Same here, diving into SwiftUI. It's quite something.",
         messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withFirstName,
         recipient: nil,
-        createdAt: Date(),
-        updatedAt: Date()
+        createdAt: randomRecentDate(),
+        updatedAt: randomRecentDate()
     )
 
     static public let messageItem3 = MessageItem(
         id: ObjectId("5f96c4141f59a5ec9a9f9f05")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", 
+        messageBody: "Pretty good, thanks! Just working on some coding projects. You?",
         messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withLastName,
         recipient: nil,
-        createdAt: Date(),
-        updatedAt: Date()
+        createdAt: randomRecentDate(),
+        updatedAt: randomRecentDate()
     )
 
     static public let messageItem4 = MessageItem(
         id: ObjectId("5f9712990430e512e7dbfe6b")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", 
+        messageBody: "Oh, nice! SwiftUI is on my list too. Found any good resources?",
         messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withLastName,
         recipient: nil,
-        createdAt: Date(),
-        updatedAt: Date()
+        createdAt: randomRecentDate(),
+        updatedAt: randomRecentDate()
     )
 
     static public let messageItem5 = MessageItem(
         id: ObjectId("5f9713d8c4b1856382b7bd86")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", 
+        messageBody: "Yeah, I've been following a couple of online tutorials and the official Apple documentation. It's been helpful.",
         messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withLastName,
         recipient: nil,
-        createdAt: Date(),
-        updatedAt: Date()
+        createdAt: randomRecentDate(),
+        updatedAt: randomRecentDate()
     )
 
     static public let messageItem6 = MessageItem(
         id: ObjectId("5f9713d8c4b1956382b7bd86")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", 
+        messageBody: "Awesome, could you share the links?",
         messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withNumber,
         recipient: nil,
-        createdAt: Date(),
-        updatedAt: Date()
+        createdAt: randomRecentDate(),
+        updatedAt: randomRecentDate()
     )
 }
 
@@ -104,7 +111,7 @@ extension MessageItem {
         let validCount = max(1, min(count, 1000))
         var messages = [MessageItem]()
 
-        var lastCreatedAt = Date().addingTimeInterval(-Double(validCount * 60)) // Start from 'validCount' minutes ago
+        var lastCreatedAt = randomRecentDate().addingTimeInterval(-Double(validCount * 60)) // Start from 'validCount' minutes ago
 
         for i in 1...validCount {
             let messageBody = generateHumanLikeMessage(for: i)
