@@ -122,7 +122,7 @@ extension UserOutput {
         URL(string: lastAvatarURLString)!
     }
 
-    private func getLastImageAttachmentURLString() -> String? {
+    public func getLastImageAttachmentURLString() -> String? {
         // Simplified and more descriptive naming
         attachments?.last(where: { $0.type == .image })?.imageUrlString
     }

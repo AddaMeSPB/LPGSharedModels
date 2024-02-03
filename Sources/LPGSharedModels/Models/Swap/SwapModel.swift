@@ -15,7 +15,7 @@ public struct SwapModel: Codable {
         sponsored: Bool? = false,
         overlay: Bool? = false,
         ownerId: ObjectId,
-        conversationsId: ObjectId,
+        conversationId: ObjectId,
         categoryId: ObjectId,
         urlString: String,
         createdAt: Date? = nil,
@@ -33,7 +33,7 @@ public struct SwapModel: Codable {
         self.overlay = overlay
 
         self.ownerId = ownerId
-        self.conversationId = conversationsId
+        self.conversationId = conversationId
         self.categoryId = categoryId
         self.urlString = urlString
 

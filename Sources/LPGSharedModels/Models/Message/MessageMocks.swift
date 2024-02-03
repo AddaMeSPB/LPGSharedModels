@@ -12,7 +12,8 @@ extension MessageItem {
     static public let messageItem1 = MessageItem(
         id: ObjectId("5f96c378d6b5590459f0cd68")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", messageType: .text,
+        messageBody: "Awesome 👏🏻", 
+        messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withFirstName,
@@ -24,7 +25,8 @@ extension MessageItem {
     static public let messageItem2 = MessageItem(
         id: ObjectId("5f96c381396c401b86d6db68")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", messageType: .text,
+        messageBody: "Awesome 👏🏻", 
+        messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withFirstName,
@@ -36,7 +38,8 @@ extension MessageItem {
     static public let messageItem3 = MessageItem(
         id: ObjectId("5f96c4141f59a5ec9a9f9f05")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", messageType: .text,
+        messageBody: "Awesome 👏🏻", 
+        messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withLastName,
@@ -48,7 +51,8 @@ extension MessageItem {
     static public let messageItem4 = MessageItem(
         id: ObjectId("5f9712990430e512e7dbfe6b")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", messageType: .text,
+        messageBody: "Awesome 👏🏻", 
+        messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withLastName,
@@ -60,7 +64,8 @@ extension MessageItem {
     static public let messageItem5 = MessageItem(
         id: ObjectId("5f9713d8c4b1856382b7bd86")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", messageType: .text,
+        messageBody: "Awesome 👏🏻", 
+        messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withLastName,
@@ -72,7 +77,8 @@ extension MessageItem {
     static public let messageItem6 = MessageItem(
         id: ObjectId("5f9713d8c4b1956382b7bd86")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-        messageBody: "Awesome 👏🏻", messageType: .text,
+        messageBody: "Awesome 👏🏻", 
+        messageType: .text,
         isRead: true,
         isDelivered: true,
         sender: .withNumber,
@@ -92,3 +98,115 @@ extension MessagePage {
       metadata: Metadata(per: 10, total: 6, page: 1)
     )
 }
+
+extension MessageItem {
+    static public func generateMockMessages(count: Int) -> [MessageItem] {
+        let validCount = max(1, min(count, 1000))
+        var messages = [MessageItem]()
+
+        var lastCreatedAt = Date().addingTimeInterval(-Double(validCount * 60)) // Start from 'validCount' minutes ago
+
+        for i in 1...validCount {
+            let messageBody = generateHumanLikeMessage(for: i)
+            let createdAt = lastCreatedAt.addingTimeInterval(60) // Increment by 1 minute for each message
+
+            let messageItem = MessageItem(
+                id: ObjectId(),
+                conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+                messageBody: messageBody,
+                messageType: .text,
+                isRead: Bool.random(),
+                isDelivered: Bool.random(),
+                sender: i % 2 == 0 ? .withAttachments : .withFirstName,
+                recipient: nil,
+                createdAt: createdAt,
+                updatedAt: createdAt
+            )
+
+            lastCreatedAt = createdAt // Update last created time for the next message
+            messages.append(messageItem)
+        }
+
+        return messages
+    }
+
+    private static func generateHumanLikeMessage(for index: Int) -> String {
+        // Sample messages - expand this list for more variety
+        let sampleMessages = [
+            "Hey, how are you doing?",
+            "That's really interesting!",
+            "I completely agree with you.",
+            "Can we meet tomorrow?",
+            "Thanks for your help!",
+            "That was a great day!",
+            "I'm looking forward to our meeting.",
+            "Could you send me the file?",
+            "Let's catch up soon!",
+            "Take care and talk to you later!",
+            "Just finished a great book!",
+            "What's your plan for the weekend?",
+            "I had a really good lunch today.",
+            "Can you believe this weather?",
+            "I've been thinking about your idea.",
+            "How's your family doing?",
+            "I saw a great movie last night.",
+            "Do you have any recommendations for a good restaurant?",
+            "I'm feeling a bit under the weather.",
+            "Work has been so busy lately.",
+            "I'm planning a small get-together, you in?",
+            "How's your new project going?",
+            "I need some advice on a problem I'm facing.",
+            "I can't wait for our vacation!",
+            "Do you prefer coffee or tea in the morning?",
+            "I'm trying to learn a new language.",
+            "Have you seen any good TV shows recently?",
+            "I just got a new pet, want to see pictures?",
+            "I've been getting into gardening lately.",
+            "What's your favorite way to relax?",
+            "I'm thinking of starting a blog.",
+            "Have you ever been to Europe?",
+            "I need some book recommendations.",
+            "What sports do you enjoy watching?",
+            "I'm looking for a good workout routine.",
+            "Do you have any plans for the holidays?",
+            "I'm thinking about changing my hairstyle.",
+            "I just redecorated my room.",
+            "Let's plan a road trip soon!",
+            "Do you have any hobbies?",
+            "I'm trying to eat healthier these days.",
+            "Have you tried that new café downtown?",
+            "I've been practicing yoga lately.",
+            "I found a great hiking trail nearby.",
+            "I'm thinking of learning to play the guitar.",
+            "What's your favorite type of music?",
+            "I just started a photography course.",
+            "I'm planning to volunteer this weekend.",
+            "I've been experimenting with new recipes.",
+            "Let's go to a concert next month!"
+        ]
+
+        return sampleMessages[index % sampleMessages.count] // Cycle through sample messages
+    }
+}
+
+// Usage example
+let mockMessages = MessageItem.generateMockMessages(count: 50) // Generate 50 mock messages
+
+extension MessagePage {
+    static public func createDynamicMessagePage(count: Int, messagesPerPage: Int, pageNumber: Int) -> MessagePage {
+        let mockMessages = MessageItem.generateMockMessages(count: count)
+        let startIndex = (pageNumber - 1) * messagesPerPage
+        let endIndex = min(startIndex + messagesPerPage, count)
+
+        let pageItems = Array(mockMessages[startIndex..<endIndex])
+        let totalPages = (count + messagesPerPage - 1) / messagesPerPage
+
+        return MessagePage(
+            items: pageItems,
+            metadata: Metadata(per: messagesPerPage, total: count, page: pageNumber)
+        )
+    }
+}
+
+// Usage example
+let dynamicMessagePage = MessagePage.createDynamicMessagePage(count: 50, messagesPerPage: 10, pageNumber: 1)

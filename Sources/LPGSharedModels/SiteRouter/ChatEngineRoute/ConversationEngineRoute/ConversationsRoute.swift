@@ -5,7 +5,6 @@ import BSON
 
 public enum ConversationsRoute: Equatable {
     case create(input: ConversationCreate)
-    case find(id: ObjectId)
     case list(query: QueryItem)
     case update(input: ConversationModel)
     case delete(id: ObjectId)
@@ -21,11 +20,6 @@ public struct ConversationsRouter: ParserPrinter {
             Route(.case(ConversationsRoute.create)) {
                 Method.post
                 Body(.json(ConversationCreate.self))
-            }
-
-            Route(.case(ConversationsRoute.find)) {
-                Method.get
-                Path { objectIdParser }
             }
 
             Route(.case(ConversationsRoute.list)) {
