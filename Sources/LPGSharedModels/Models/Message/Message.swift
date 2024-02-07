@@ -18,6 +18,7 @@ public struct MessageModel: Codable {
   ) {
     self._id = _id
     self.conversationId =  messageItem.conversationId
+    self.productId = messageItem.swap?.id
     self.senderId = messageItem.sender.id
     self.recipientId = messageItem.recipient?.id
     self.messageBody = messageItem.messageBody
@@ -33,6 +34,7 @@ public struct MessageModel: Codable {
   public var isDelivered: Bool
 
   public var conversationId: ObjectId
+  public var productId: ObjectId?
   public var senderId: ObjectId
   public var recipientId: ObjectId?
 
@@ -74,6 +76,7 @@ public struct MessageItem: Identifiable {
 
     public var id: ObjectId
     public var conversationId: ObjectId
+    public var swap: SwapOutput?
     public var messageBody: String
     public var messageType: MessageType
     public var isRead: Bool
@@ -100,6 +103,7 @@ public struct MessageItem: Identifiable {
     public init(
         id: ObjectId,
         conversationId: ObjectId,
+        swap: SwapOutput?,
         messageBody: String,
         messageType: MessageType,
         isRead: Bool = false,
@@ -111,6 +115,7 @@ public struct MessageItem: Identifiable {
     ) {
         self.id = id
         self.conversationId = conversationId
+        self.swap = swap
         self.messageBody = messageBody
         self.messageType = messageType
         self.isRead = isRead

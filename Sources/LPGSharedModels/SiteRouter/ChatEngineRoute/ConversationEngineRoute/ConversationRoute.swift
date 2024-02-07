@@ -1,9 +1,10 @@
-
+import BSON
 import URLRouting
+import Parsing
 
 public enum ConversationRoute: Equatable {
     case find
-    case joinuser
+    case joinuser(productId: ObjectId? = nil)
     case messages(MessagesRoute)
 }
 
@@ -13,9 +14,11 @@ struct ConversationRouter: ParserPrinter {
             Route(.case(ConversationRoute.find))
 
             Route(.case(ConversationRoute.joinuser)) {
-                // from client have to send this "v1/users/\(usersId)/conversations/(conversationsId)/join")
                 Method.put
                 Path { "joinuser" }
+                Optionally {
+                    Path { objectIdParser }
+                }
             }
 
             Route(.case(ConversationRoute.messages)) {
@@ -25,4 +28,3 @@ struct ConversationRouter: ParserPrinter {
         }
     }
 }
-

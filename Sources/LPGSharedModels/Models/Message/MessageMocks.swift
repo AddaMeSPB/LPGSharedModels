@@ -18,7 +18,8 @@ func randomRecentDate() -> Date {
 extension MessageItem {
     static public let messageItem1 = MessageItem(
         id: ObjectId("5f96c378d6b5590459f0cd68")!,
-        conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+        conversationId: ObjectId("5f929515ba01cea941e2b2eb")!, 
+        swap: nil,
         messageBody: "Hey, how's it going?",
         messageType: .text,
         isRead: true,
@@ -31,7 +32,8 @@ extension MessageItem {
 
     static public let messageItem2 = MessageItem(
         id: ObjectId("5f96c381396c401b86d6db68")!,
-        conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+        conversationId: ObjectId("5f929515ba01cea941e2b2eb")!, 
+        swap: nil,
         messageBody: "Same here, diving into SwiftUI. It's quite something.",
         messageType: .text,
         isRead: true,
@@ -44,7 +46,8 @@ extension MessageItem {
 
     static public let messageItem3 = MessageItem(
         id: ObjectId("5f96c4141f59a5ec9a9f9f05")!,
-        conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+        conversationId: ObjectId("5f929515ba01cea941e2b2eb")!, 
+        swap: nil,
         messageBody: "Pretty good, thanks! Just working on some coding projects. You?",
         messageType: .text,
         isRead: true,
@@ -58,6 +61,7 @@ extension MessageItem {
     static public let messageItem4 = MessageItem(
         id: ObjectId("5f9712990430e512e7dbfe6b")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+        swap: nil,
         messageBody: "Oh, nice! SwiftUI is on my list too. Found any good resources?",
         messageType: .text,
         isRead: true,
@@ -71,6 +75,7 @@ extension MessageItem {
     static public let messageItem5 = MessageItem(
         id: ObjectId("5f9713d8c4b1856382b7bd86")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+        swap: nil,
         messageBody: "Yeah, I've been following a couple of online tutorials and the official Apple documentation. It's been helpful.",
         messageType: .text,
         isRead: true,
@@ -84,6 +89,7 @@ extension MessageItem {
     static public let messageItem6 = MessageItem(
         id: ObjectId("5f9713d8c4b1956382b7bd86")!,
         conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+        swap: nil,
         messageBody: "Awesome, could you share the links?",
         messageType: .text,
         isRead: true,
@@ -120,6 +126,7 @@ extension MessageItem {
             let messageItem = MessageItem(
                 id: ObjectId(),
                 conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+                swap: nil,
                 messageBody: messageBody,
                 messageType: .text,
                 isRead: Bool.random(),

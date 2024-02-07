@@ -4,31 +4,36 @@ import Foundation
 extension ConversationCreate {
     static public let exploreAreaDraff: ConversationCreate = .init(
         title: CategoryModel.exploreAreaDraff.name,
-        type: .group,
+        type: .group, 
+        productId: nil,
         opponentPhoneNumber: "+79211111111", opponentEmailAddress: ""
     )
     
     static public let runningDraff: ConversationCreate = .init(
         title: CategoryModel.runningDraff.name,
         type: .group,
+        productId: nil,
         opponentPhoneNumber: "+79211111112", opponentEmailAddress: ""
     )
     
     static public let walkAroundDraff: ConversationCreate = .init(
         title: CategoryModel.walkAroundDraff.name,
         type: .group,
+        productId: nil,
         opponentPhoneNumber: "+79211111113", opponentEmailAddress: ""
     )
     
     static public let lookingForAcompanyDraff: ConversationCreate = .init(
         title: CategoryModel.lookingForAcompanyDraff.name,
         type: .group,
+        productId: nil,
         opponentPhoneNumber: "+79211111114", opponentEmailAddress: ""
     )
     
     static public let empty: ConversationCreate = .init(
         title: "",
         type: .oneToOne,
+        productId: nil,
         opponentPhoneNumber: "+79211111115", opponentEmailAddress: ""
     )
 }
@@ -49,7 +54,7 @@ extension AddUser {
 extension ConversationOutPut {
     static public var walkAroundDraff: ConversationOutPut = .init(
         id: ObjectId("5fabb1ebaa5f7844ccfe48c3")!,
-        title: ConversationCreate.walkAroundDraff.title,
+        title: ConversationCreate.walkAroundDraff.title ?? "unknow",
         type: ConversationCreate.walkAroundDraff.type,
         admins: [.withFirstName],
         members: [.withAttachments, .withLastName],
@@ -61,7 +66,7 @@ extension ConversationOutPut {
     
     static public var runningDraff: ConversationOutPut = .init(
         id: ObjectId("2fabb1ebaa5f7844ccfe48c1")!,
-        title: ConversationCreate.runningDraff.title,
+        title: ConversationCreate.runningDraff.title ?? "unknow",
         type: ConversationCreate.runningDraff.type,
         admins: [.withLastName],
         members: [.withAttachments, .withFirstName],
@@ -73,7 +78,7 @@ extension ConversationOutPut {
     
     static public var exploreAreaDraff: ConversationOutPut = .init(
         id: ObjectId("5fabb1ebaa5f7844ccfe45c3")!,
-        title: ConversationCreate.exploreAreaDraff.title,
+        title: ConversationCreate.exploreAreaDraff.title ?? "unknow",
         type: ConversationCreate.exploreAreaDraff.type,
         admins: [.withFirstName],
         members: [.withAttachments, .withLastName],
@@ -85,7 +90,7 @@ extension ConversationOutPut {
     
     static public var lookingForAcompanyDraff: ConversationOutPut = .init(
         id: ObjectId("2fabb1ebaa5f1844ccfe48c1")!,
-        title: ConversationCreate.lookingForAcompanyDraff.title,
+        title: ConversationCreate.lookingForAcompanyDraff.title ?? "unknow",
         type: ConversationCreate.lookingForAcompanyDraff.type,
         admins: [.withLastName],
         members: [.withAttachments, .withFirstName],
