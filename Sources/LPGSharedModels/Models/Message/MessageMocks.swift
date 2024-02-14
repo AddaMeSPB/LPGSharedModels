@@ -113,6 +113,53 @@ extension MessagePage {
 }
 
 extension MessageItem {
+
+    static let swap: SwapOutput = .init(
+            id: .init(),
+            title: "Car and Dolls Car and Dolls Car and Dolls Car and DollsCar and DollsCar and Dolls",
+            details: "awesome car",
+            distance: 0.9,
+            addressName: "some address goes here",
+            geometry: .near,
+            sponsored: true,
+            overlay: false,
+            owner: .withAttachments,
+            conversationId: .init(),
+            categoryId: .init(),
+            attachments: [.image1, .image2, .image3, .image4],
+            urlString: "",
+            createdAt: .now,
+            updatedAt: .now
+        )
+
+    static public let messageItem = MessageItem(
+        id: ObjectId(),
+        conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+        swap: nil,
+        messageBody: "I'm looking forward to our meeting.",
+        messageType: .text,
+        isRead: false,
+        isDelivered: true,
+        sender: .withFirstName,
+        recipient: nil,
+        createdAt: .now,
+        updatedAt: .now
+    )
+
+    static public let messageItemWithSwap = MessageItem(
+        id: ObjectId(),
+        conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
+        swap: swap,
+        messageBody: "messageBody",
+        messageType: .product,
+        isRead: true,
+        isDelivered: false,
+        sender: .withAttachments,
+        recipient: nil,
+        createdAt: .now,
+        updatedAt: .now
+    )
+
     static public func generateMockMessages(count: Int) -> [MessageItem] {
         let validCount = max(1, min(count, 1000))
         var messages = [MessageItem]()
@@ -123,12 +170,13 @@ extension MessageItem {
             let messageBody = generateHumanLikeMessage(for: i)
             let createdAt = lastCreatedAt.addingTimeInterval(60) // Increment by 1 minute for each message
 
+            let swapgame = i % 2 == 0 ? swap : nil
             let messageItem = MessageItem(
                 id: ObjectId(),
                 conversationId: ObjectId("5f929515ba01cea941e2b2eb")!,
-                swap: nil,
+                swap: swapgame,
                 messageBody: messageBody,
-                messageType: .text,
+                messageType: swapgame == nil ? .text : .product,
                 isRead: Bool.random(),
                 isDelivered: Bool.random(),
                 sender: i % 2 == 0 ? .withAttachments : .withFirstName,
