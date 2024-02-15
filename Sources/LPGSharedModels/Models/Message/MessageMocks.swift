@@ -118,7 +118,7 @@ extension MessageItem {
             id: .init(),
             title: "Car and Dolls Car and Dolls Car and Dolls Car and DollsCar and DollsCar and Dolls",
             details: "awesome car",
-            distance: 0.9,
+            distance: 0.9, status: .available,
             addressName: "some address goes here",
             geometry: .near,
             sponsored: true,

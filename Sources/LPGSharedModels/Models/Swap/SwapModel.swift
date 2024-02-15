@@ -10,6 +10,7 @@ public struct SwapModel: Codable {
         title: String,
         details: String? = nil,
         distance: Double? = nil,
+        status: SPStatus = .available,
         addressName: String,
         geometry: Geometry,
         sponsored: Bool? = false,
@@ -25,6 +26,8 @@ public struct SwapModel: Codable {
         self.title = title
         self.details = details
         self.distance = distance
+        self.status = status
+
 
         // Place information
         self.addressName = addressName
@@ -45,6 +48,7 @@ public struct SwapModel: Codable {
     public var title: String
     public var details: String?
     public var distance: Double?
+    public var status: SPStatus
 
     // Place information
     public var addressName: String
@@ -67,16 +71,27 @@ extension SwapModel {
         attachments: [AttachmentInOutPut],
         userOutput: UserOutput
     ) -> SwapOutput {
-        return .init(id: self._id, title: self.title, details: self.details, distance: self.distance ?? 0.0, addressName: self.addressName, geometry: self.geometry, sponsored: self.sponsored, overlay: self.overlay, owner: userOutput, conversationId: self.conversationId, categoryId: self.categoryId, attachments: attachments, urlString: self.urlString, createdAt: self.createdAt!, updatedAt: self.updatedAt!)
+        return .init(id: self._id, title: self.title, details: self.details, distance: self.distance ?? 0.0, status: status, addressName: self.addressName, geometry: self.geometry, sponsored: self.sponsored, overlay: self.overlay, owner: userOutput, conversationId: self.conversationId, categoryId: self.categoryId, attachments: attachments, urlString: self.urlString, createdAt: self.createdAt!, updatedAt: self.updatedAt!)
     }
 }
 
 
 extension SwapModel: Equatable {
     public static func == (lhs: SwapModel, rhs: SwapModel) -> Bool {
-        return lhs._id == rhs._id
-        && lhs.createdAt == rhs.createdAt
-        && lhs.addressName == rhs.addressName
-        && rhs.geometry == rhs.geometry
+        return lhs._id == rhs._id &&
+               lhs.title == rhs.title &&
+               lhs.details == rhs.details &&
+               lhs.distance == rhs.distance &&
+               lhs.status == rhs.status &&
+               lhs.addressName == rhs.addressName &&
+               lhs.geometry == rhs.geometry &&
+               lhs.sponsored == rhs.sponsored &&
+               lhs.overlay == rhs.overlay &&
+               lhs.ownerId == rhs.ownerId &&
+               lhs.conversationId == rhs.conversationId &&
+               lhs.categoryId == rhs.categoryId &&
+               lhs.urlString == rhs.urlString &&
+               lhs.createdAt == rhs.createdAt &&
+               lhs.updatedAt == rhs.updatedAt
     }
 }

@@ -8,6 +8,7 @@ public struct SwapOutput: Codable {
         title: String,
         details: String?,
         distance: Double,
+        status: SPStatus,
         addressName: String,
         geometry: Geometry,
         sponsored: Bool? = false,
@@ -24,6 +25,7 @@ public struct SwapOutput: Codable {
         self.title = title
         self.details = details
         self.distance = distance
+        self.status = status
         self.addressName = addressName
         self.geometry = geometry
         self.sponsored = sponsored
@@ -41,6 +43,7 @@ public struct SwapOutput: Codable {
     public var title: String
     public var details: String?
     public var distance: Double
+    public var status: SPStatus
 
     // Place information
     public var addressName: String
@@ -67,6 +70,7 @@ extension SwapOutput: Equatable {
         return lhs.id == rhs.id
         && lhs.title == rhs.title
         && lhs.distance == rhs.distance
+        && lhs.status == rhs.status
         && lhs.geometry == rhs.geometry
         && lhs.owner == rhs.owner
         && lhs.conversationId == rhs.conversationId

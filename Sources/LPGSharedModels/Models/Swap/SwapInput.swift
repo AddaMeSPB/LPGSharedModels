@@ -6,6 +6,7 @@ import Foundation
 public struct SwapInput {
     public var name: String
     public var details: String?
+    public var status: SPStatus
     public var images: [AttachmentInOutPut] = []
     public var isActive: Bool
     public var ownerId: ObjectId?
@@ -21,6 +22,7 @@ public struct SwapInput {
     public init(
         name: String,
         details: String? = nil,
+        status: SPStatus,
         images: [AttachmentInOutPut] = [],
         isActive: Bool,
         ownerId: ObjectId? = nil,
@@ -33,6 +35,7 @@ public struct SwapInput {
     ) {
         self.name = name
         self.details = details
+        self.status = status
         self.images = images
         self.isActive = isActive
         self.ownerId = ownerId
@@ -47,7 +50,7 @@ public struct SwapInput {
 
 extension SwapInput {
     public static var empty: SwapInput = .init(
-        name: "", isActive: false,
+        name: "", status: .givenAway, isActive: false,
         ownerId: nil, conversationId: ObjectId(),
         categoryId: ObjectId(), addressName: "",
         geometry: .init(type: .Polygon, coordinates: [0.0, 0.0])
