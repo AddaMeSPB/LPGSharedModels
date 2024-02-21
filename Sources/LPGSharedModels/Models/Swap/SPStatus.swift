@@ -20,3 +20,17 @@ public enum SPStatus: Int, Equatable, CaseIterable, Identifiable {
 }
 
 extension SPStatus: Codable {}
+
+import BSON
+
+public struct SPStatusUpdateInput: Codable, Equatable {
+
+    public let sp_id: ObjectId
+    public let status: SPStatus
+
+    public init(sp_id: ObjectId, status: SPStatus) {
+        self.sp_id = sp_id
+        self.status = status
+    }
+
+}

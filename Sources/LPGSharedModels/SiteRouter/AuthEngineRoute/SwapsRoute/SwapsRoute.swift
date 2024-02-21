@@ -11,7 +11,7 @@ public enum SwapsRoute: Equatable {
     case update(input: SwapModel)
     case delete(ObjectId)
 
-    case changeStatus(Int)
+    case changeStatus(SPStatusUpdateInput)
 }
 
 public struct SwapsRouter: ParserPrinter {
@@ -61,7 +61,7 @@ public struct SwapsRouter: ParserPrinter {
             Route(.case(SwapsRoute.changeStatus)) {
                 Path { "change_status" }
                 Method.put
-                Path { Int.parser() }
+                Body(.json(SPStatusUpdateInput.self))
             }
 
         }
