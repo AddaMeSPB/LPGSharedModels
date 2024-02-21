@@ -10,6 +10,8 @@ public enum SwapsRoute: Equatable {
     case read(ObjectId)
     case update(input: SwapModel)
     case delete(ObjectId)
+
+    case changeStatus(Int)
 }
 
 public struct SwapsRouter: ParserPrinter {
@@ -54,6 +56,12 @@ public struct SwapsRouter: ParserPrinter {
             Route(.case(SwapsRoute.delete)) {
                 Method.delete
                 Path { objectIdParser }
+            }
+
+            Route(.case(SwapsRoute.changeStatus)) {
+                Path { "change_status" }
+                Method.put
+                Path { Int.parser() }
             }
 
         }
