@@ -25,11 +25,11 @@ import BSON
 
 public struct SPStatusUpdateInput: Codable, Equatable {
 
-    public let sp_id: ObjectId
+    public let spId: ObjectId
     public let status: SPStatus
 
-    public init(sp_id: ObjectId, status: SPStatus) {
-        self.sp_id = sp_id
+    public init(spId: ObjectId, status: SPStatus) {
+        self.spId = spId
         self.status = status
     }
 
