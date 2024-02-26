@@ -8,8 +8,8 @@ public enum ConversationRoute: Equatable {
     case messages(MessagesRoute)
 }
 
-struct ConversationRouter: ParserPrinter {
-    var body: some Router<ConversationRoute> {
+public struct ConversationRouter: ParserPrinter {
+    public var body: some Router<ConversationRoute> {
         OneOf {
             Route(.case(ConversationRoute.find))
 

@@ -36,5 +36,4 @@ public struct AttachmentRouter: ParserPrinter {
             Method.delete
         }
     }
-
 }
